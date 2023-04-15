@@ -25,4 +25,16 @@ class Square extends Shapes {
   }
 }
 
-module.exports = { Circle, Triangle, Square };
+class Ellipse extends Shapes {
+  render() {
+    return `<ellipse cx="200" cy="80" rx="100" ry="50" fill="${this.color}" />`;
+  }
+}
+
+class Star extends Shapes {
+  render() {
+    return `<polygon points="100,10 40,198 190,78 10,78 160,198" fill="${this.color}" />`;
+  }
+}
+
+module.exports = { Circle, Triangle, Square, Ellipse, Star };

@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
-const { Circle, Triangle, Square } = require("./shapes");
+const { Circle, Triangle, Square, Ellipse, Star } = require("./shapes");
+const SVG = require("./svg");
+const { writeFile } = require("fs/promises");
 
 // Questions to pass into the prompt
 const questions = [
@@ -19,7 +21,7 @@ const questions = [
     name: "shapeType",
     type: "list",
     message: "Select a shape for the logo",
-    choices: ["circle", "square", "triangle"],
+    choices: ["circle", "square", "triangle", "ellipse", "star"],
   },
   {
     name: "shapeColor",
@@ -31,25 +33,47 @@ const questions = [
 // calls the prompt on run()
 class CLI {
   run() {
-    return inquirer
-      .prompt(questions)
-      .then(({ text, textColor, shapeType, shapeColor }) => {
-        let shape;
-        switch (shapeType) {
-          case "circle":
-            shape = new Circle();
-            break;
+    return (
+      inquirer
+        .prompt(questions)
+        // passing down the user response and creating a new shape based on users response
+        .then(({ text, textColor, shapeType, shapeColor }) => {
+          let shape;
+          switch (shapeType) {
+            case "circle":
+              shape = new Circle();
+              break;
 
-          case "square":
-            shape = new Square();
-            break;
+            case "square":
+              shape = new Square();
+              break;
 
-          default:
-            shape = new Triangle();
-            break;
-        }
-        shape.setColor(shapeColor);
-      });
+            case "ellipse":
+              shape = new Ellipse();
+              break;
+
+            case "star":
+              shape = new Star();
+              break;
+
+            case "triangle":
+              shape = new Triangle();
+              break;
+          }
+          shape.setColor(shapeColor);
+
+          const svg = new SVG();
+          svg.setText(text, textColor);
+          svg.setShape(shape);
+          return writeFile("./assets/logo.svg", svg.render());
+        })
+        .then(() => {
+          console.log("Generated logo.svg");
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    );
   }
 }
 
