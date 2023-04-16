@@ -5,29 +5,35 @@ class Shapes {
   setColor(color) {
     this.shapeColor = color;
   }
+  setBorderColor(borderColor) {
+    this.borderColor = borderColor;
+  }
+  setBorderThickness(borderThickness) {
+    this.borderThickness = borderThickness;
+  }
 }
 
 class Circle extends Shapes {
   render() {
-    return `<circle cx="80" cy="80" r="70" stroke="black" stroke-width="3" fill="${this.shapeColor}" />`;
+    return `<circle cx="80" cy="80" r="70" stroke="${this.borderColor}" stroke-width="${this.borderThickness}" fill="${this.shapeColor}" />`;
   }
 }
 
 class Triangle extends Shapes {
   render() {
-    return `<polygon points="100 30, 200 200, 0 200" fill="${this.shapeColor}" />`;
+    return `<polygon points="100 30, 200 200, 0 200" stroke="${this.borderColor}" stroke-width="${this.borderThickness}" fill="${this.shapeColor}" />`;
   }
 }
 
 class Square extends Shapes {
   render() {
-    return `<rect x="50" y="20" width="150" height="150" fill="${this.shapeColor}" />`;
+    return `<rect x="50" y="20" width="150" height="150" stroke="${this.borderColor}" stroke-width="${this.borderThickness}" fill="${this.shapeColor}" />`;
   }
 }
 
 class Ellipse extends Shapes {
   render() {
-    return `<ellipse cx="200" cy="80" rx="100" ry="50" fill="${this.shapeColor}" />`;
+    return `<ellipse cx="200" cy="80" rx="100" ry="50" stroke="${this.borderColor}" stroke-width="${this.borderThickness}" fill="${this.shapeColor}" />`;
   }
 }
 

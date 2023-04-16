@@ -15,18 +15,36 @@ const questions = [
   {
     name: "textColor",
     type: "input",
-    message: "Enter a text color",
+    message: "What color do you want the text to be",
   },
   {
     name: "shapeType",
     type: "list",
-    message: "Select a shape for the logo",
+    message: "What shape do you want to use",
     choices: ["circle", "square", "triangle", "ellipse", "star"],
   },
   {
     name: "shapeColor",
     type: "input",
-    message: "Enter a shape color",
+    message: "What color do you want the shape to be",
+  },
+  {
+    name: "hasBorderColor",
+    type: "list",
+    message: "Do you want to add a border color?",
+    choices: ["yes", "no"],
+  },
+  {
+    name: "borderColor",
+    type: "input",
+    message: "What color do you want the border to be",
+    when: (answers) => answers.hasBorderColor === "yes",
+  },
+  {
+    name: "borderThickness",
+    type: "input",
+    message: "How thick do you want the border to be in pixels",
+    when: (answers) => answers.hasBorderColor === "yes",
   },
 ];
 
@@ -37,36 +55,52 @@ class CLI {
       inquirer
         .prompt(questions)
         // passing down the user response and creating a new shape based on users response
-        .then(({ text, textColor, shapeType, shapeColor }) => {
-          let shape;
-          switch (shapeType) {
-            case "circle":
-              shape = new Circle();
-              break;
+        .then(
+          ({
+            text,
+            textColor,
+            shapeType,
+            shapeColor,
+            hasBorderColor,
+            borderColor,
+            borderThickness,
+          }) => {
+            let shape;
+            switch (shapeType) {
+              case "circle":
+                shape = new Circle();
+                break;
 
-            case "square":
-              shape = new Square();
-              break;
+              case "square":
+                shape = new Square();
+                break;
 
-            case "ellipse":
-              shape = new Ellipse();
-              break;
+              case "ellipse":
+                shape = new Ellipse();
+                break;
 
-            case "star":
-              shape = new Star();
-              break;
+              case "star":
+                shape = new Star();
+                break;
 
-            case "triangle":
-              shape = new Triangle();
-              break;
+              case "triangle":
+                shape = new Triangle();
+                break;
+            }
+            shape.setColor(shapeColor);
+
+            // Set border color and thickness if user selected yes for border color
+            if (hasBorderColor === "yes") {
+              shape.setBorderColor(borderColor);
+              shape.setBorderThickness(borderThickness);
+            }
+
+            const svg = new SVG();
+            svg.setShape(shape);
+            svg.setText(text, textColor, shape);
+            return writeFile("./assets/logo.svg", svg.render());
           }
-          shape.setColor(shapeColor);
-
-          const svg = new SVG();
-          svg.setShape(shape);
-          svg.setText(text, textColor, shape);
-          return writeFile("./assets/logo.svg", svg.render());
-        })
+        )
         .then(() => {
           console.log("Generated logo.svg");
         })
