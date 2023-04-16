@@ -15,18 +15,18 @@ const questions = [
   {
     name: "textColor",
     type: "input",
-    message: "What color do you want the text to be",
+    message: "What color do you want the text to be?",
   },
   {
     name: "shapeType",
     type: "list",
-    message: "What shape do you want to use",
+    message: "What shape do you want to use?",
     choices: ["circle", "square", "triangle", "ellipse", "star"],
   },
   {
     name: "shapeColor",
     type: "input",
-    message: "What color do you want the shape to be",
+    message: "What color do you want the shape to be?",
   },
   {
     name: "hasBorderColor",
@@ -37,13 +37,17 @@ const questions = [
   {
     name: "borderColor",
     type: "input",
-    message: "What color do you want the border to be",
+    message: "What color do you want the border to be?",
     when: (answers) => answers.hasBorderColor === "yes",
   },
   {
     name: "borderThickness",
     type: "input",
-    message: "How thick do you want the border to be in pixels",
+    message: "How thick do you want the border to be?",
+    default: "1px",
+    validate: (borderThickness) =>
+      borderThickness.includes("px") ||
+      "The border thickness must be in pixels (ex: 1px)",
     when: (answers) => answers.hasBorderColor === "yes",
   },
 ];
