@@ -11,9 +11,6 @@ Command line tool to generate an svg logo and write it to file.
   - Logo will be written to `logo.svg` in the working directory.
 - Run tests with `npm run test`
 
-## References
+## Generated Logo Example
 
-<https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction>
-<https://marketplace.visualstudio.com/items?itemName=jock.svg>
-<https://github.com/SBoudrias/Inquirer.js>
-<https://jestjs.io/>
+<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><ellipse cx="200" cy="80" rx="100" ry="50" stroke="blue" stroke-width="2px" fill="Yellow" /><text x="200" y="100" font-size="60" text-anchor="middle" fill="Blue" style="font-family: Cursive, sans-serif">FRK</text></svg>
