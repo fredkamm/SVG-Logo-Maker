@@ -7,14 +7,14 @@ class SVG {
   }
 
   render() {
-    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">${this.shape}${this.text}</svg>`;
+    return `<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg">${this.shape}${this.text}</svg>`;
   }
-  
+
   setShape(shape) {
     this.shape = shape.render();
   }
 
-  setText(text, textColor, shape) {
+  setText(text, textColor, shape, fontStyle) {
     if (text.length > 3) {
       throw new Error("Text must not exceed 3 characters.");
     }
@@ -42,7 +42,7 @@ class SVG {
 
       case Ellipse:
         textX = 200;
-        textY = 105;
+        textY = 100;
         break;
 
       case Star:
@@ -55,7 +55,7 @@ class SVG {
         throw new Error("Invalid shape.");
     }
 
-    this.text = `<text x="${textX}" y="${textY}" font-size="${textSize}" text-anchor="middle" fill="${textColor}">${text}</text>`;
+    this.text = `<text x="${textX}" y="${textY}" font-size="${textSize}" text-anchor="middle" fill="${textColor}" style="font-family: ${fontStyle}, sans-serif">${text}</text>`;
   }
 }
 
