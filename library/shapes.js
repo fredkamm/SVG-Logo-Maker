@@ -1,14 +1,18 @@
 class Shapes {
   constructor() {
+    // Initialize shape color
     this.shapeColor = "";
   }
   setColor(color) {
+    // Set the shape color
     this.shapeColor = color;
   }
   setBorderColor(borderColor) {
+    // Set the border color
     this.borderColor = borderColor;
   }
   setBorderThickness(borderThickness) {
+    // Set the border thickness
     this.borderThickness = borderThickness;
   }
 }
@@ -45,7 +49,7 @@ class Star extends Shapes {
 
 class Diamond extends Shapes {
   render() {
-    return `<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="${this.shapeColor}" />`;
+    return `<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="${this.shapeColor}" stroke-width="${this.borderThickness}" fill="${this.shapeColor}" />`;
   }
 }
 

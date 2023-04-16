@@ -1,5 +1,12 @@
 const inquirer = require("inquirer");
-const { Circle, Triangle, Square, Ellipse, Star, Diamond } = require("./shapes");
+const {
+  Circle,
+  Triangle,
+  Square,
+  Ellipse,
+  Star,
+  Diamond,
+} = require("./shapes");
 const SVG = require("./svg");
 const { writeFile } = require("fs/promises");
 const questions = require("./questions");
@@ -57,7 +64,9 @@ class CLI {
             }
 
             const svg = new SVG();
+            // Setting the shape object to the SVG object
             svg.setShape(shape);
+            // Setting text properties to the SVG object
             svg.setText(text, textColor, shape, fontStyle);
             return writeFile("./assets/logo.svg", svg.render());
           }

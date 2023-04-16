@@ -12,12 +12,14 @@ class SVG {
     this.text = "";
     this.shape = "";
   }
-
+  
+  // call "render" method to generate SVG markup
   render() {
     return `<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg">${this.shape}${this.text}</svg>`;
   }
 
   setShape(shape) {
+    // Call "render" method on the shape object and store the result in the shape property
     this.shape = shape.render();
   }
 
@@ -26,6 +28,7 @@ class SVG {
       throw new Error("Text must not exceed 3 characters.");
     }
 
+    // Initialize text position and size based on shape
     let textX = 0;
     let textY = 0;
     let textSize = 60;
@@ -65,6 +68,7 @@ class SVG {
         break;
     }
 
+    // Set the text content and style
     this.text = `<text x="${textX}" y="${textY}" font-size="${textSize}" text-anchor="middle" fill="${textColor}" style="font-family: ${fontStyle}, sans-serif">${text}</text>`;
   }
 }
