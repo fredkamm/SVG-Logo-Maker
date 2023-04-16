@@ -63,8 +63,8 @@ class CLI {
           shape.setColor(shapeColor);
 
           const svg = new SVG();
-          svg.setText(text, textColor, shape);
           svg.setShape(shape);
+          svg.setText(text, textColor, shape);
           return writeFile("./assets/logo.svg", svg.render());
         })
         .then(() => {
