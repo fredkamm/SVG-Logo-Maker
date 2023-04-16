@@ -60,7 +60,7 @@ const questions = [
     type: "input",
     message: "What color do you want the border to be?",
     default: "black",
-    when: (answers) => answers.hasBorderColor === "yes",
+    when: (input) => input.hasBorderColor === "yes",
   },
   {
     name: "borderThickness",
@@ -70,7 +70,7 @@ const questions = [
     validate: (borderThickness) =>
       borderThickness.includes("px") ||
       "The border thickness must be in pixels (ex: 1px)",
-    when: (answers) => answers.hasBorderColor === "yes",
+    when: (input) => input.hasBorderColor === "yes",
   },
 ];
 
