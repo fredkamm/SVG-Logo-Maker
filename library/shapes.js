@@ -43,4 +43,10 @@ class Star extends Shapes {
   }
 }
 
-module.exports = { Circle, Triangle, Square, Ellipse, Star };
+class Diamond extends Shapes {
+  render() {
+    return `<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="${this.shapeColor}" />`;
+  }
+}
+
+module.exports = { Circle, Triangle, Square, Ellipse, Star, Diamond };

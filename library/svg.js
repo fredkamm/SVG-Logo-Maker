@@ -1,4 +1,11 @@
-const { Circle, Triangle, Square, Ellipse, Star } = require("./shapes");
+const {
+  Circle,
+  Triangle,
+  Square,
+  Ellipse,
+  Star,
+  Diamond,
+} = require("./shapes");
 
 class SVG {
   constructor() {
@@ -46,6 +53,12 @@ class SVG {
         break;
 
       case Star:
+        textX = 100;
+        textY = 113;
+        textSize = 45;
+        break;
+
+      case Diamond:
         textX = 100;
         textY = 113;
         textSize = 45;

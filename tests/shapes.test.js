@@ -4,6 +4,7 @@ const {
   Circle,
   Ellipse,
   Star,
+  Diamond,
 } = require("../library/shapes");
 
 describe("Circle", () => {
@@ -113,6 +114,25 @@ describe("Star", () => {
     const star = new Star();
     star.setColor("red");
     const actualSvg = star.render();
+    expect(actualSvg).toEqual(expectedSvg);
+  });
+});
+
+describe("Diamond", () => {
+  test("should render svg for a green polygon element", () => {
+    const expectedSvg =
+      '<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="dodgerblue" />';
+    const diamond = new Diamond();
+    diamond.setColor("dodgerblue");
+    const actualSvg = diamond.render();
+    expect(actualSvg).toEqual(expectedSvg);
+  });
+  test("should accept a fillColor param", () => {
+    const expectedSvg =
+      '<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="red" />';
+    const diamond = new Diamond();
+    diamond.setColor("red");
+    const actualSvg = diamond.render();
     expect(actualSvg).toEqual(expectedSvg);
   });
 });

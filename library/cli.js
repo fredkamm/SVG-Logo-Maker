@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const { Circle, Triangle, Square, Ellipse, Star } = require("./shapes");
+const { Circle, Triangle, Square, Ellipse, Star, Diamond } = require("./shapes");
 const SVG = require("./svg");
 const { writeFile } = require("fs/promises");
 const questions = require("./questions");
@@ -42,6 +42,10 @@ class CLI {
 
               case "triangle":
                 shape = new Triangle();
+                break;
+
+              case "diamond":
+                shape = new Diamond();
                 break;
             }
             shape.setColor(shapeColor);
