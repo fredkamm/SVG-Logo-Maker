@@ -50,9 +50,6 @@ class SVG {
         textY = 113;
         textSize = 45;
         break;
-
-      default:
-        throw new Error("Invalid shape.");
     }
 
     this.text = `<text x="${textX}" y="${textY}" font-size="${textSize}" text-anchor="middle" fill="${textColor}" style="font-family: ${fontStyle}, sans-serif">${text}</text>`;

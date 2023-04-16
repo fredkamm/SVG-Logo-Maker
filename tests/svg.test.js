@@ -17,29 +17,29 @@ test("should throw if text exceeds 3 characters", () => {
 
 test("should append text element", () => {
   const expectedSvg =
-    '<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><text x="125" y="150" font-size="60" text-anchor="middle" fill="white" style="font-family: Monospace, sans-serif">A</text></svg>';
+    '<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><text x="0" y="0" font-size="60" text-anchor="middle" fill="white" style="font-family: Monospace, sans-serif">A</text></svg>';
   const svg = new SVG();
-  svg.setText("A", "white", "Square", "Monospace");
+  svg.setText("A", "white", "circle", "Monospace");
   expect(svg.render()).toEqual(expectedSvg);
 });
 
-// test("should set text message and color", () => {
-//   const expectedSvg =
-//     '<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><text x="150" y="125" font-size="60" text-anchor="middle" fill="#333">SVG</text></svg>';
-//   const svg = new SVG();
-//   svg.setText("SVG", "#333", "Square", "Monospace");
-//   expect(svg.render()).toEqual(expectedSvg);
-// });
+test("should set text message and color", () => {
+  const expectedSvg =
+    '<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><text x="0" y="0" font-size="60" text-anchor="middle" fill="#333" style="font-family: Monospace, sans-serif">SVG</text></svg>';
+  const svg = new SVG();
+  svg.setText("SVG", "#333", "circle", "Monospace");
+  expect(svg.render()).toEqual(expectedSvg);
+});
 
-// test("should include a shape", () => {
-//   const expectedSvg =
-//     '<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><rect x="50" y="20" width="150" height="150" stroke="undefined" stroke-width="undefined" fill="blue" /><text x="125" y="150" font-size="60" text-anchor="middle" fill="#333" style="font-family: Monospace, sans-serif">SVG</text></svg>';
-//   const svg = new SVG();
-//   svg.setText("SVG", "#333", "Square", "Monospace");
-//   const square = new Square();
-//   square.setColor("blue");
-//   square.setBorderColor("black");
-//   square.setBorderThickness("2px");
-//   svg.setShape(square);
-//   expect(svg.render()).toEqual(expectedSvg);
-// });
+test("should include a shape", () => {
+  const expectedSvg =
+    '<svg version="1.1" width="400" height="400" xmlns="http://www.w3.org/2000/svg"><rect x="50" y="20" width="150" height="150" stroke="black" stroke-width="2px" fill="blue" /><text x="0" y="0" font-size="60" text-anchor="middle" fill="#333" style="font-family: Monospace, sans-serif">SVG</text></svg>';
+  const svg = new SVG();
+  svg.setText("SVG", "#333", "Square", "Monospace");
+  const square = new Square();
+  square.setColor("blue");
+  square.setBorderColor("black");
+  square.setBorderThickness("2px");
+  svg.setShape(square);
+  expect(svg.render()).toEqual(expectedSvg);
+});

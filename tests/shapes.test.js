@@ -1,8 +1,15 @@
-const { Square, Triangle, Circle, Ellipse, Star } = require("../library/shapes");
+const {
+  Square,
+  Triangle,
+  Circle,
+  Ellipse,
+  Star,
+} = require("../library/shapes");
 
 describe("Circle", () => {
   test("should render svg for a green circle element with a black border of 2px", () => {
-    const expectedSvg = '<circle cx="80" cy="80" r="70" stroke="black" stroke-width="2px" fill="green" />';
+    const expectedSvg =
+      '<circle cx="80" cy="80" r="70" stroke="black" stroke-width="2px" fill="green" />';
     const circle = new Circle();
     circle.setColor("green");
     circle.setBorderColor("black");
@@ -11,7 +18,8 @@ describe("Circle", () => {
     expect(actualSvg).toEqual(expectedSvg);
   });
   test("should accept a fillColor param", () => {
-    const expectedSvg = '<circle cx="80" cy="80" r="70" stroke="black" stroke-width="2px" fill="blue" />';
+    const expectedSvg =
+      '<circle cx="80" cy="80" r="70" stroke="black" stroke-width="2px" fill="blue" />';
     const circle = new Circle();
     circle.setColor("blue");
     circle.setBorderColor("black");
