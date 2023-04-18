@@ -49,7 +49,7 @@ class Star extends Shapes {
 
 class Diamond extends Shapes {
   render() {
-    return `<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="${this.shapeColor}" stroke-width="${this.borderThickness}" fill="${this.shapeColor}" />`;
+    return `<path d="M100,20 L180,100 L100,180 L20,100 L100,20 Z" fill="${this.shapeColor}" stroke-width="${this.borderThickness}" stroke="${this.borderColor}" />`;
   }
 }
 
